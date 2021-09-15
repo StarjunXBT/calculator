@@ -6,35 +6,34 @@ let txt = document.getElementById('txt-calc');
 let mode = ''
 
 
-plusBtn.onclick = () => addTextNode('+');
-firstBtn.onclick = () => addTextNode(1, 'addition');
-eraseBtn.onclick = () => txt.textContent = '';
+plusBtn.onclick = () => addOperator('+', 'addition');
+firstBtn.onclick = () => addTextNode(1);
+eraseBtn.onclick = () => erase();
 equalBtn.onclick = () => operate()
 
-
-function addTextNode(hereIsYourText, setMode) {
+function erase() {
+    txt.textContent = '';
+    mode = '';
+}
+function addTextNode(hereIsYourText) {
     let newtext = document.createTextNode(hereIsYourText);
     txt.appendChild(newtext);
-    mode = setMode
 }
-function add(a,b) {
-return a+b;
-}
-function multiply(a,b) {
-    return a*b;
-}
-function substract(a,b) {
-    return a-b;
-}
-function divide(a,b) {
-    return a/b;
+function addOperator(operator, calc) {
+    if (operator == '+' && calc == 'addition' && mode == '') {
+        let operand = document.createTextNode('+');
+        txt.appendChild(operand);
+        mode = 'addition'
+        console.log(`mode : ${mode}`)
+    }
 }
 function operate(a,b) {
     if (mode == 'addition') {
-        let test = txt.textContent.split('+');
-        const num = Number(test[0]) + Number(test[1])
-        console.log(test, num)
+        let half = txt.textContent.split('+');
+        const num = Number(half[0]) + Number(half[1])
         txt.textContent = num;
+        mode = ''
+        console.log(`mode : ${mode}`)
     }
 }
 
