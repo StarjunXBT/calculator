@@ -67,12 +67,12 @@ html {
     background-color: #A4B5BF;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 758px) {
     html {
         font-size: 14px;
     }
     #container {
-        width: 60vw;
-        height: 80vh;
+        width: 80vw;
+        height: 70vh;
     }
 }
